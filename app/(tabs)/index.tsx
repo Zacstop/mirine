@@ -1,98 +1,98 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { Header } from "@/components/common/Header";
+import { CartBar } from "@/components/home/CartBar";
+import { CategoryFilter } from "@/components/home/CategoryFilter";
+import { FoodItem } from "@/components/home/FoodItem";
+import { SearchBar } from "@/components/home/SearchBar";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { CATEGORIES, MENU_DATA } from "@/constants/MenuData";
+import { styles } from "@/styles/homeScreenStyles";
+import { CartItem, MenuItem } from "@/types";
+import React, { useMemo, useState } from "react";
+import { Alert, SafeAreaView, ScrollView } from "react-native";
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const [searchText, setSearchText] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [addedItems, setAddedItems] = useState<Set<number>>(new Set());
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const filteredMenu = useMemo(() => {
+    return MENU_DATA.filter((item) => {
+      const matchesCategory =
+        selectedCategory === "all" || item.category === selectedCategory;
+      const matchesSearch =
+        item.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        item.description.toLowerCase().includes(searchText.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [searchText, selectedCategory]);
+
+  const cartTotal = useMemo(() => {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = cart.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    return { totalItems, totalPrice };
+  }, [cart]);
+
+  const handleAddToCart = (item: MenuItem) => {
+    const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+
+    if (existingItem) {
+      setCart(
+        cart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        )
+      );
+    } else {
+      setCart([...cart, { ...item, quantity: 1 }]);
+    }
+
+    const newAddedItems = new Set(addedItems);
+    newAddedItems.add(item.id);
+    setAddedItems(newAddedItems);
+
+    setTimeout(() => {
+      setAddedItems((prev) => {
+        const newSet = new Set(prev);
+        newSet.delete(item.id);
+        return newSet;
+      });
+    }, 1000);
+  };
+
+  const handleCartPress = () => {
+    const cartSummary = cart
+      .map((item) => `${item.name} x${item.quantity}`)
+      .join("\n");
+    Alert.alert("장바구니", `주문 내역:\n\n${cartSummary}`, [{ text: "확인" }]);
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Header />
+      <SearchBar value={searchText} onChangeText={setSearchText} />
+      <CategoryFilter
+        categories={CATEGORIES}
+        selected={selectedCategory}
+        onSelect={setSelectedCategory}
+      />
+      <ScrollView>
+        {filteredMenu.map((item) => (
+          <FoodItem
+            key={item.id}
+            item={item}
+            isAdded={addedItems.has(item.id)}
+            onAdd={handleAddToCart}
+          />
+        ))}
+      </ScrollView>
+      {cartTotal.totalItems > 0 && (
+        <CartBar cart={cart} onPress={handleCartPress} />
+      )}
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
