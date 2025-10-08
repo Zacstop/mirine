@@ -133,3 +133,42 @@ export interface OrderStats {
   totalItems: number;
   totalAmount: number;
 }
+
+// 사용자 화면
+export interface UserProfile {
+  name: string;
+  email: string;
+  avatar: string;
+  badge: string;
+  points: number;
+  stats: {
+    totalOrders: number;
+    totalReviews: number;
+    favorites: number;
+  };
+}
+
+export interface PaymentMethod {
+  id: number;
+  name: string;
+  cardNumber: string;
+  isDefault: boolean;
+  icon: string;
+}
+
+export interface OrderHistory {
+  id: string;
+  orderNumber: string;
+  date: string;
+  status: "completed" | "processing" | "cancelled";
+  items: string;
+  location: string;
+  totalAmount: number;
+}
+
+export interface Coupon {
+  id: number;
+  name: string;
+  discount: number;
+  expiryDays: number;
+}

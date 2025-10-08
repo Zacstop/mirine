@@ -44,6 +44,10 @@ export default function RootLayout() {
           name="order/complete"
           options={{ headerShown: false, title: "픽업완료" }}
         />
+        <Stack.Screen
+          name="(tabs)/profile"
+          options={{ headerShown: false, title: "픽업완료" }}
+        />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

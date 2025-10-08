@@ -6,10 +6,13 @@ import { Text, TouchableOpacity, View } from "react-native";
 export const Header: React.FC = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.logo}>UnionEats</Text>
+      <Text style={styles.logo}>미리내</Text>
 
       <View style={styles.headerActions}>
-        <TouchableOpacity style={styles.profileIcon}>
+        <TouchableOpacity
+          style={styles.profileIcon}
+          onPress={() => router.push("/(tabs)/profile")}
+        >
           <Text style={styles.profileEmoji}>👤</Text>
         </TouchableOpacity>
         <TouchableOpacity

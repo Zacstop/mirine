@@ -184,6 +184,7 @@ export default function MenuDetailScreen() {
     );
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const totalPrice = useMemo(() => {
     const optionsTotal = selectedOptions.reduce((sum, optionId) => {
       const option = menuItem.options.find((opt) => opt.id === optionId);
@@ -213,7 +214,7 @@ export default function MenuDetailScreen() {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
+    <SafeAreaView style={styles.container}>
       <MenuDetailHeader
         onShare={handleShare}
         onLike={handleLike}
