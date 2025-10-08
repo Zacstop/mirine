@@ -17,5 +17,5 @@ export const DEFAULT_OPTIONS: CartOption[] = [
 
 export const PICKUP_INFO: PickupInfo = {
   location: "픽업 장소",
-  locationDetail: "학생회관 1층 3번 창구",
+  locationDetail: "연지스퀘어 1층 S푸드 픽업대",
 };

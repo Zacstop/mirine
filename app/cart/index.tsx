@@ -142,7 +142,9 @@ export default function CartScreen() {
           text: "확인",
           onPress: () => {
             setCart([]);
-            router.back();
+            // router.back();
+            //   router.push(`/order/${order.id}`);
+            router.push("/order/A247");
           },
         },
       ]

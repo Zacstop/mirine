@@ -90,6 +90,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     borderRadius: 6,
     marginLeft: 8,
+    marginBottom: 16,
   },
   cartItem: {
     backgroundColor: "#FFFFFF",
@@ -284,7 +285,7 @@ export const styles = StyleSheet.create({
     borderTopColor: "#E8EAED",
   },
   pickupInfo: {
-    backgroundColor: "#FFD700",
+    backgroundColor: "#E8EAED",
     borderRadius: 16,
     padding: 16,
     marginBottom: 16,

@@ -79,3 +79,57 @@ export interface PickupInfo {
   location: string;
   locationDetail: string;
 }
+
+// 조리중 / 완료화면
+export type OrderStatus =
+  | "received"
+  | "paid"
+  | "cooking"
+  | "ready"
+  | "completed";
+
+export interface OrderStep {
+  id: string;
+  title: string;
+  icon: string;
+  status: "completed" | "active" | "pending";
+  time?: string;
+}
+
+export interface OrderTracking {
+  orderNumber: string;
+  status: OrderStatus;
+  estimatedTime: number; // seconds
+  steps: OrderStep[];
+  items: OrderItem[];
+  pickupLocation: {
+    name: string;
+    detail: string;
+  };
+}
+
+export interface OrderItem {
+  id: number;
+  name: string;
+  emoji: string;
+  options?: string;
+  quantity: number;
+  price: number;
+}
+
+// 픽업완료 화면
+export interface OrderComplete {
+  orderNumber: string;
+  date: string;
+  waitTime: number; // minutes
+  totalItems: number;
+  totalAmount: number;
+  earnedPoints: number;
+  items: OrderItem[];
+}
+
+export interface OrderStats {
+  waitTime: number;
+  totalItems: number;
+  totalAmount: number;
+}
