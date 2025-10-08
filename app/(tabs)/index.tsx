@@ -5,10 +5,10 @@ import { FoodItem } from "@/components/home/FoodItem";
 import { SearchBar } from "@/components/home/SearchBar";
 
 import { CATEGORIES, MENU_DATA } from "@/constants/MenuData";
-import { styles } from "@/styles/homeScreenStyles";
+import { styles } from "@/styles/homeScreen.styles";
 import { CartItem, MenuItem } from "@/types";
 import React, { useMemo, useState } from "react";
-import { Alert, SafeAreaView, ScrollView } from "react-native";
+import { Alert, SafeAreaView, ScrollView, View } from "react-native";
 
 export default function HomeScreen() {
   const [searchText, setSearchText] = useState<string>("");
@@ -80,16 +80,18 @@ export default function HomeScreen() {
         selected={selectedCategory}
         onSelect={setSelectedCategory}
       />
-      <ScrollView>
-        {filteredMenu.map((item) => (
-          <FoodItem
-            key={item.id}
-            item={item}
-            isAdded={addedItems.has(item.id)}
-            onAdd={handleAddToCart}
-          />
-        ))}
-      </ScrollView>
+      <View style={{ padding: 10 }}>
+        <ScrollView>
+          {filteredMenu.map((item) => (
+            <FoodItem
+              key={item.id}
+              item={item}
+              isAdded={addedItems.has(item.id)}
+              onAdd={handleAddToCart}
+            />
+          ))}
+        </ScrollView>
+      </View>
       {cartTotal.totalItems > 0 && (
         <CartBar cart={cart} onPress={handleCartPress} />
       )}

@@ -1,13 +1,23 @@
-import { styles } from "@/styles/homeScreenStyles";
+import { styles } from "@/styles/homeScreen.styles";
+import { router } from "expo-router";
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 export const Header: React.FC = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.logo}>CampusEats</Text>
-      <View style={styles.profileIcon}>
-        <Text style={styles.profileEmoji}>👤</Text>
+      <Text style={styles.logo}>UnionEats</Text>
+
+      <View style={styles.headerActions}>
+        <TouchableOpacity style={styles.profileIcon}>
+          <Text style={styles.profileEmoji}>👤</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.cartButton}
+          onPress={() => router.push("/cart")}
+        >
+          <Text style={styles.cartButtonText}>🛒</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

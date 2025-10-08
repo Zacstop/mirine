@@ -1,4 +1,4 @@
-import { styles } from "@/styles/homeScreenStyles";
+import { styles } from "@/styles/homeScreen.styles";
 import { Category } from "@/types";
 import React from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";

@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#E8EAED",
     backgroundColor: "#FFFFFF",
+    borderBottomColor: "#E8EAED",
   },
   logo: {
     fontFamily:
@@ -21,6 +21,10 @@ export const styles = StyleSheet.create({
     fontWeight: "800",
     color: "#0066FF",
     // color: "linear-gradient(135deg, #0066FF 0%, #4facfe 100%)",
+  },
+  headerActions: {
+    flexDirection: "row",
+    gap: 12,
   },
   slogun: {
     fontSize: 14,
@@ -149,8 +153,20 @@ export const styles = StyleSheet.create({
   infoItem: {
     fontSize: 13,
     color: "#5F6368",
-    marginRight: 16,
   },
+  cartButton: {
+    width: 40,
+    height: 40,
+    backgroundColor: "#F1F3F4",
+    borderRadius: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cartButtonText: {
+    // fontSize: 18,
+    fontSize: 20,
+  },
+
   foodActions: {
     flexDirection: "row",
     justifyContent: "space-between",

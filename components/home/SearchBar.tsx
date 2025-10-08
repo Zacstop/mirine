@@ -1,4 +1,4 @@
-import { styles } from "@/styles/homeScreenStyles";
+import { styles } from "@/styles/homeScreen.styles";
 import React from "react";
 import { TextInput, View } from "react-native";
 
