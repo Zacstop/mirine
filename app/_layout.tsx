@@ -19,11 +19,10 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        {/* <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
           name="modal"
           options={{ presentation: "modal", title: "Modal" }}
-        /> */}
+        />
 
         <Stack.Screen
           name="(tabs)"
@@ -33,35 +32,17 @@ export default function RootLayout() {
           name="menu/[id]"
           options={{ headerShown: false, title: "상세정보" }}
         />
-        {/* <Stack.Screen
-          name="menu/[id]"
-          options={{
-            headerShown: true,
-            title: "상세정보",
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => router.push("/cart")}
-                style={{
-                  marginRight: 15,
-                  paddingHorizontal: 12,
-                  paddingVertical: 6,
-                  backgroundColor: "#edededff",
-                  borderRadius: 20,
-                }}
-              >
-                <Text
-                  style={{ color: "blue", fontSize: 16, fontWeight: "600" }}
-                >
-                  🛒
-                </Text>
-              </TouchableOpacity>
-            ),
-          }}
-        /> */}
-
         <Stack.Screen
           name="cart/index"
           options={{ headerShown: false, title: "장바구니" }}
+        />
+        <Stack.Screen
+          name="order/[id]"
+          options={{ headerShown: false, title: "주문현황" }}
+        />
+        <Stack.Screen
+          name="order/complete"
+          options={{ headerShown: false, title: "픽업완료" }}
         />
       </Stack>
       <StatusBar style="auto" />
