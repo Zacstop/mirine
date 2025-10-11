@@ -322,7 +322,13 @@ export const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    maxHeight: "80%",
+    height: 480,
+  },
+  methodsModalContent: {
+    backgroundColor: "#FFFFFF",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    height: 360,
   },
   modalHeader: {
     padding: 20,
@@ -439,5 +445,170 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: "#5F6368",
+  },
+  // tabNavigation: {
+  //   padding: 20,
+  //   paddingBottom: 16,
+  // },
+  // tabButton: {
+  //   paddingVertical: 10,
+  //   paddingHorizontal: 20,
+  //   backgroundColor: "#FFFFFF",
+  //   borderWidth: 1,
+  //   borderColor: "#E8EAED",
+  //   borderRadius: 20,
+  //   marginRight: 8,
+  // },
+  // tabButtonActive: {
+  //   backgroundColor: "#0066FF",
+  //   borderColor: "#0066FF",
+  // },
+  // tabButtonText: {
+  //   fontSize: 14,
+  //   fontWeight: "600",
+  //   color: "#5F6368",
+  // },
+  // tabButtonTextActive: {
+  //   color: "#FFFFFF",
+  // },
+  // historyList: {
+  //   padding: 20,
+  //   paddingTop: 0,
+  // },
+  // summaryCard: {
+  //   backgroundColor: "#F8F9FA",
+  //   borderRadius: 16,
+  //   padding: 20,
+  //   marginTop: 20,
+  // },
+  // summaryRow: {
+  //   flexDirection: "row",
+  //   justifyContent: "space-between",
+  //   marginBottom: 12,
+  // },
+  // summaryRowLast: {
+  //   marginBottom: 0,
+  //   paddingTop: 12,
+  //   borderTopWidth: 1,
+  //   borderTopColor: "#DADCE0",
+  //   marginTop: 12,
+  // },
+  // summaryLabel: {
+  //   color: "#5F6368",
+  //   fontSize: 15,
+  // },
+  // summaryValue: {
+  //   fontWeight: "700",
+  //   fontSize: 15,
+  //   color: "#1A1A1A",
+  // },
+  // summaryTotal: {
+  //   fontSize: 20,
+  //   fontWeight: "700",
+  //   color: "#0066FF",
+  // },
+
+  //
+  //
+  //
+
+  modalContentAnimated: {
+    backgroundColor: "#FFFFFF",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 10,
+  },
+  dragHandleContainer: {
+    alignItems: "center",
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+  },
+  dragHandle: {
+    width: 40,
+    height: 4,
+    backgroundColor: "#DADCE0",
+    borderRadius: 2,
+  },
+  modalHeaderCustom: {
+    paddingHorizontal: 20,
+    paddingBottom: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    borderBottomWidth: 1,
+    borderBottomColor: "#E8EAED",
+  },
+  tabNavigation: {
+    paddingHorizontal: 20,
+    paddingVertical: 16,
+  },
+  tabButton: {
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#E8EAED",
+    borderRadius: 20,
+    marginRight: 8,
+  },
+  tabButtonActive: {
+    backgroundColor: "#0066FF",
+    borderColor: "#0066FF",
+  },
+  tabButtonText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#5F6368",
+  },
+  tabButtonTextActive: {
+    color: "#FFFFFF",
+  },
+  historyScrollView: {
+    flex: 1,
+  },
+  historyList: {
+    padding: 20,
+    paddingTop: 0,
+  },
+  summaryCard: {
+    backgroundColor: "#F8F9FA",
+    borderRadius: 16,
+    padding: 20,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  summaryRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 12,
+  },
+  summaryRowLast: {
+    marginBottom: 0,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: "#DADCE0",
+    marginTop: 12,
+  },
+  summaryLabel: {
+    color: "#5F6368",
+    fontSize: 15,
+  },
+  summaryValue: {
+    fontWeight: "700",
+    fontSize: 15,
+    color: "#1A1A1A",
+  },
+  summaryTotal: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#0066FF",
   },
 });

@@ -12,7 +12,7 @@ import {
 } from "@/constants/profileData";
 import { styles } from "@/styles/profile.styles";
 import React, { useState } from "react";
-import { Alert, ScrollView } from "react-native";
+import { Alert, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ProfileScreen() {
@@ -58,15 +58,17 @@ export default function ProfileScreen() {
         <ProfileHeader profile={MOCK_USER_PROFILE} />
         <PointsCard points={MOCK_USER_PROFILE.points} />
         <UserStats stats={MOCK_USER_PROFILE.stats} />
-        <ProfileMenuList items={MENU_ITEMS} onItemPress={handleMenuItemPress} />
         <RecentOrders orders={MOCK_ORDER_HISTORY} />
+        <ProfileMenuList items={MENU_ITEMS} onItemPress={handleMenuItemPress} />
       </ScrollView>
 
-      <PaymentMethodsModal
-        visible={paymentModalVisible}
-        methods={MOCK_PAYMENT_METHODS}
-        onClose={() => setPaymentModalVisible(false)}
-      />
+      <View>
+        <PaymentMethodsModal
+          visible={paymentModalVisible}
+          methods={MOCK_PAYMENT_METHODS}
+          onClose={() => setPaymentModalVisible(false)}
+        />
+      </View>
     </SafeAreaView>
   );
 }

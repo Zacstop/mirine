@@ -6,7 +6,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 export const Header: React.FC = () => {
   return (
     <View style={styles.header}>
-      <Text style={styles.logo}>미리내</Text>
+      <Text style={styles.logo}>UnionEats</Text>
 
       <View style={styles.headerActions}>
         <TouchableOpacity

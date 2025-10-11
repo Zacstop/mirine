@@ -59,6 +59,7 @@ export const CartBar: React.FC<CartBarProps> = ({ cart, onPress }) => {
   const handlePress = () => {
     if (onPress) {
       onPress();
+      router.push("/cart");
     } else {
       // 장바구니 화면으로 이동
       router.push("/cart");

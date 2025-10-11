@@ -81,7 +81,7 @@ export default function HomeScreen() {
         selected={selectedCategory}
         onSelect={setSelectedCategory}
       />
-      <ScrollView style={{ padding: 10 }}>
+      <ScrollView style={{ padding: 10 }} showsVerticalScrollIndicator={false}>
         {filteredMenu.map((item) => (
           <FoodItem
             key={item.id}

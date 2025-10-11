@@ -95,9 +95,9 @@ export const FoodItem: React.FC<FoodItemProps> = ({ item, isAdded, onAdd }) => {
             </Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={styles.infoItem}>📊 {item.calories}kcal</Text>
+            {/* <Text style={styles.infoItem}>📊 {item.calories}kcal</Text>
             <Text style={styles.infoItem}>🕐 {item.time}분</Text>
-            <Text style={styles.infoItem}>🌶️ {item.spice}</Text>
+            <Text style={styles.infoItem}>🌶️ {item.spice}</Text> */}
           </View>
           <View style={styles.foodActions}>
             <View style={styles.rating}>

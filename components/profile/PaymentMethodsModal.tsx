@@ -76,14 +76,18 @@ export const PaymentMethodsModal: React.FC<PaymentMethodsModalProps> = ({
           activeOpacity={1}
           onPress={(e) => e.stopPropagation()}
         >
-          <View style={styles.modalContent}>
+          <View style={styles.methodsModalContent}>
             <View style={styles.modalHeader}>
               <Text style={styles.modalTitle}>결제 수단 관리</Text>
               <TouchableOpacity style={styles.modalClose} onPress={onClose}>
                 <Text style={styles.modalCloseText}>×</Text>
               </TouchableOpacity>
             </View>
-            <ScrollView style={styles.modalBody}>
+            <ScrollView
+              style={styles.modalBody}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{ paddingBottom: 90 }}
+            >
               {methods.map((method) => (
                 <View key={method.id} style={styles.paymentCard}>
                   <View style={styles.paymentInfo}>

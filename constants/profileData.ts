@@ -59,13 +59,13 @@ export const MENU_ITEMS = [
     subtitle: "카드 2개 등록",
     featured: true,
   },
-  {
-    id: "payment-history",
-    icon: "📊",
-    title: "결제 내역",
-    subtitle: "이번 달 47건",
-    featured: true,
-  },
+  // {
+  //   id: "payment-history",
+  //   icon: "📊",
+  //   title: "결제 내역",
+  //   subtitle: "이번 달 47건",
+  //   featured: true,
+  // },
   {
     id: "coupons",
     icon: "🎫",

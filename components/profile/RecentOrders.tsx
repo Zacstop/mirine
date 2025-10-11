@@ -1,13 +1,15 @@
 import { styles } from "@/styles/profile.styles";
 import { OrderHistory } from "@/types";
-import React from "react";
+import React, { useState } from "react";
 import { Alert, Text, TouchableOpacity, View } from "react-native";
+import { PaymentHistoryModal } from "./PaymentHistoryModal";
 
 interface RecentOrdersProps {
   orders: OrderHistory[];
 }
 
 export const RecentOrders: React.FC<RecentOrdersProps> = ({ orders }) => {
+  const [historyModalVisible, setHistoryModalVisible] = useState(false);
   const handleOrderPress = (order: OrderHistory) => {
     Alert.alert(
       "📋 주문 상세",
@@ -16,7 +18,7 @@ export const RecentOrders: React.FC<RecentOrdersProps> = ({ orders }) => {
   };
 
   const handleViewAll = () => {
-    Alert.alert("전체 주문 내역", "모든 주문 내역을 확인합니다.");
+    setHistoryModalVisible(true);
   };
 
   return (
@@ -50,6 +52,13 @@ export const RecentOrders: React.FC<RecentOrdersProps> = ({ orders }) => {
           </View>
         </TouchableOpacity>
       ))}
+
+      <View>
+        <PaymentHistoryModal
+          visible={historyModalVisible}
+          onClose={() => setHistoryModalVisible(false)}
+        />
+      </View>
     </View>
   );
 };
